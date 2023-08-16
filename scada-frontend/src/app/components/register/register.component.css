@@ -1,0 +1,81 @@
+.register-container{
+    padding: 5vh 3vh;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.register-title{
+    width: -webkit-fill-available;
+    text-align: center;
+    margin: 0;
+    font-size: 32px;
+}
+
+hr{
+    height: 1px;
+    background-color: var(--navy-blue);
+}
+
+.register-subtitle{
+    margin: 0;
+    margin-top: 1vw;
+    font-size: 18px;
+}
+
+.credentials{
+    margin-top: 1vw;
+    display: grid;
+    width: -webkit-fill-available;
+    justify-content: center;
+}
+
+input{
+    display: inline;
+    padding: 0.5vw 1.5vw;
+    font-size: 17px;
+    margin-top: 0.5vw;
+    border: solid var(--navy-blue);
+    border-radius: 10px;
+}
+
+.login{
+    margin-top:2vw;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login:hover{
+    color: gray;
+}
+
+.register-footer{
+    display: flex;
+    justify-content: center;
+}
+
+.register-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    font-size: 25px;
+    border: none;
+    border-radius: 10px;
+    padding: 1vh 5vh;
+    cursor: pointer;
+}
+.register-btn:hover{
+    opacity: 0.9;
+}
+
+.warning{
+    display: inline;
+    margin-left: 0.5vw;
+    vertical-align: middle;
+    color: var(--navy-blue);
+    font-size: 30px;
+}

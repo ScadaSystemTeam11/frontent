@@ -1,0 +1,57 @@
+<div>
+    <div class="register-container">
+            <h4 class="register-title gothic-a1">Register</h4>
+            <hr>
+        <div class="register-body">
+            <p class="register-subtitle open-sans">Hey! Enter your credentials to create a new account!</p>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="credentials">
+                    <div>
+                        <input type="text" id="fname" placeholder="First name" formControlName="fname">
+                        <p *ngIf="registerForm?.get('fname')?.invalid && registerForm?.get('fname')?.touched" class="warning">!</p>
+                    </div>
+                    <div>
+                        <input type="text" id="lname" placeholder="Last name" formControlName="lname">
+                        <p *ngIf="registerForm?.get('lname')?.invalid && registerForm?.get('lname')?.touched" class="warning">!</p>
+                    </div>
+
+                    <div>
+                        <input type="email" id="email" placeholder="E-mail" formControlName="email">
+                        <p *ngIf="registerForm?.get('email')?.invalid && registerForm?.get('email')?.touched" class="warning">!</p>
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="Password" formControlName="password">
+                        <p *ngIf="registerForm?.get('password')?.invalid && registerForm?.get('password')?.touched" class="warning">!
+                        </p>
+                    </div>
+                    <div>
+                        <input type="text" id="username" placeholder="Username" formControlName="username">
+                        <p *ngIf="registerForm?.get('username')?.invalid && registerForm?.get('username')?.touched" class="warning">!</p>
+                    </div>
+                    <div style="text-align: center;" >
+                        <input  type="date" id="birth_date" placeholder="Birth date" formControlName="birth_date">
+                        <p *ngIf="registerForm?.get('birth-date')?.invalid && registerForm?.get('birth-date')?.touched" class="warning">!</p>
+                    </div>
+                    <div class="referrer-checkbox">
+                        <label>
+                            <input type="checkbox" formControlName="referredByFriend">
+                            Referred to by a friend?
+                        </label>
+                    </div>
+
+                    <div class="referrer-input" *ngIf="registerForm.get('referredByFriend')?.value">
+                        <input type="text" placeholder="Referrer username" formControlName="referrerUsername">
+                    </div>
+
+
+                </div>
+                <p class="login open-sans" (click)="close()">Already have an account? <b>Login</b></p>
+                <hr>
+                <div class="register-footer">
+                    <button type="button" type="submit" class="register-btn gothic-a1">Register</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
