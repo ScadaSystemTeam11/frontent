@@ -5,7 +5,7 @@
           <div class="text-center">
               <p class="login-subtitle open-sans">Hey! Enter your credentials to sign in to your account!</p>
               <div class="credentials">
-                <input type="text" name = "email" id="email_login" placeholder="E-mail" class="open-sans" [(ngModel)]="email">
+                <input type="text" name = "email" id="email_login" placeholder="Username" class="open-sans" [(ngModel)]="email">
                 <input type="password" name = "password" id="password_login" placeholder="Password" class="open-sans" [(ngModel)]="password">
               </div>
               <p class="open-sans invalid" *ngIf="invalidCredentials">Invalid email or password</p>

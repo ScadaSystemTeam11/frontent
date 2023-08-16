@@ -17,9 +17,9 @@ export class AuthenticationService {
   
   constructor(private http: HttpClient, public router: Router) {}
 
-  register(user: User): Observable<any> {
-    let api = `${environment.api}/user/register`;
-    return this.http.post(api, user).pipe(catchError(this.handleError));
+  register(username : string, password : string): Observable<any> {
+    let api = `${environment.api}/user/Register`;
+    return this.http.post(api, {Username : username, Password : password}).pipe(catchError(this.handleError));
   }
 
   login(username : string, password : string) {
