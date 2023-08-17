@@ -1,0 +1,20 @@
+<table class="file-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>I/O Address</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tag of tags">
+            <td class="tag-name">{{tag.id}}</td>
+            <td class="tag-name">{{tag.tagName}}</td>
+            <td class="tag-name">{{tag.description}}</td>
+            <td class="tag-name">{{tag.ioAddress}}</td>
+            <td class="tag-name">{{tag.currentValue}}</td>
+        </tr>
+    </tbody>
+</table>

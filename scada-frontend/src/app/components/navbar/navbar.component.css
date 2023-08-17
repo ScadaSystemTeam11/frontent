@@ -1,0 +1,67 @@
+.cloud-navbar{
+    background-color: var(--navy-blue);
+    min-width: 16.6%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    float: left;
+    height: 100%;
+    position: fixed;
+    width: 250px;
+  }
+  
+  .navbar-logo{
+    max-width: calc(100% - 50px);
+    margin-top: 15px;
+  
+  }
+  
+  .menu{
+    color: white;
+    list-style-type: none;
+    padding: 0;
+    font-size: 26px;
+    margin-top: 30px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .navbar-item-icon{
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .menu div > li{
+    margin-top: 12px;
+    padding: 5px 40px;
+    cursor: pointer;
+  }
+  
+  #navbar-content{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .navbar-bottom{
+    margin-top: auto;
+  }
+  
+  .main-menu li:hover{
+    background-color: var(--dark-navy-blue);
+  }
+  
+  .shared{
+    padding: 10px 0 10px 90px !important;
+    margin-top: 0 !important;
+  }
+  
+  .dropdown-icon{
+    height: 15px;
+  }
+  
+  .dropdown-icon-up{
+    height: 15px;
+    rotate: 180deg;
+  }

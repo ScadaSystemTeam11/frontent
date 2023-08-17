@@ -1,0 +1,32 @@
+<div class="cloud-navbar">
+    <img src="../../../assets/images/logo/scada-logo.png" alt="scada-logo" class="navbar-logo">
+    <div id="navbar-content" >
+        <ul class="menu rubik main-menu">
+            <div class="top-menu">
+                <li routerLink="/trending">
+                    <img src="../../../assets/images/icons/ratings-icon.png" alt="trending-icon" class="navbar-item-icon">
+                    Trending
+                </li>
+                <li routerLink="/alarms">
+                    <img src="../../../assets/images/icons/alarm-icon.png" alt="alarm-icon" class="navbar-item-icon">
+                    Alarms
+                </li>
+                <li routerLink="/database">
+                    <img src="../../../assets/images/icons/database-icon.png" alt="database-icon" class="navbar-item-icon">
+                    Database
+                </li>
+                <li routerLink="/reports">
+                    <img src="../../../assets/images/icons/report-icon.png" alt="report-icon" class="navbar-item-icon">
+                    Reports
+                </li>
+            </div>
+            <div class="bottom-menu">
+                <li (click)="logout()">
+                    <img src="../../../assets/images/icons/logout-icon.png" alt="logout-icon" class="navbar-item-icon navbar-bottom">
+                    Log out
+                </li>
+            </div>
+            
+        </ul>
+    </div>
+</div>

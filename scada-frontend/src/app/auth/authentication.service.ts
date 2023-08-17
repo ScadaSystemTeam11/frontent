@@ -29,7 +29,7 @@ export class AuthenticationService {
     result.subscribe((res: any) => {
       console.log(res);
       localStorage.setItem('current_user', res);
-      this.router.navigate(['home']);
+      this.router.navigate(['trending']);
       this.currentUser = res;
     });
     return result;
