@@ -1,0 +1,80 @@
+.modal-container{
+    overflow: hidden;
+    background-color: white;
+    color: black;
+}
+
+.modal-header{
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+}
+
+.modal-title{
+    width: -webkit-fill-available;
+    text-align: left;
+    margin: 0;
+    font-size: 30px;
+    padding: 10px;
+    font-weight: 600;
+    color: var(--navy-blue);
+}
+
+.x-btn{
+    border: none;
+    background-color: white;
+    font-size: 40px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.x-btn:focus{
+    outline: none;
+}
+.x-btn:hover{
+    opacity: 0.4;
+}
+
+.close-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+}
+
+.modal-footer{
+    justify-content: right;
+}
+
+.modal-body{
+    padding: 0 !important;
+    color: black;
+}
+
+.preview-details{
+    padding: 20px 30px;
+}
+
+.short-details{
+    display: flex;
+}
+
+.preview-details p,
+.preview-details mat-chip-listbox{
+    font-size: 18px;
+    padding: 5px;
+}
+
+.data{
+    margin-left: 20px;
+}
+
+.tag{
+    padding-left: 10px !important;
+}
+
+table tr td:first-child{
+    padding: 10px 5px;
+}
+table tr td:nth-child(2){
+    padding: 10px 5px 10px 40px;
+}

@@ -1,0 +1,19 @@
+<div class="container"> 
+    <div class="row">
+      <div *ngFor="let alert of alarmAlerts" class="referral" >
+        <div class="referral-metadata">
+          <div class="referral-header">
+            <p class="referral-name">Alert ID: {{alert.id}}</p>
+          </div>
+          <div class="referral-body">
+            <p>For Analog Tag: {{alert.Alarm.TagID}}</p>
+            <p>Alarm ID: {{alert.Alarm.ID}}</p>
+            <p>Time: {{alert.Timestamp}}</p>
+            <p>Alarm Priority: {{alert.Alarm.Priority}}</p>
+            <p>Alarm Type: {{alert.Alarm.Type}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

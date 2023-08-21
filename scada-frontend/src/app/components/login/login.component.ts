@@ -20,13 +20,6 @@ export class LoginComponent {
 
   login() : void {
     let result = this.authService.login(this.email, this.password)
-    result.subscribe((res: any) => {
-      console.log(res);
-    },
-    (err: any) =>{
-      this.invalidCredentials = true;
-    });
-
   }
 
   close(){

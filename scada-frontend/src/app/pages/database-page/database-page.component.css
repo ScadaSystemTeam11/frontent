@@ -1,0 +1,10 @@
+.workspace{
+    margin-left: 250px;
+}
+.database{
+    font-size: 54px;
+    color: var(--navy-blue);
+    padding: 60px 0 0 30px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}

@@ -1,0 +1,40 @@
+<div class="modal-container">
+    <div class="modal-header">
+        <h1  mat-dialog-title class="modal-title">Alarms for </h1>
+        <button type="button" class="x-btn" mat-dialog-close>&times;</button>
+        <hr>
+    </div>
+    <div class="modal-body">   
+        <div class="selected-options">
+            <button (click)="openCreateAlarm()">Create New Alarm</button>
+        </div>
+        <table class="file-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Priority</th>
+                <th>Limit Value</th>
+                <th>Unit</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let alarm of tag.alarms">
+                <td>{{alarm.id}}</td>
+                <td>{{alarm.type}}</td>
+                <td>{{alarm.priority}}</td>
+                <td>{{alarm.valueLimit}}</td>
+                <td>{{alarm.unit}}</td>
+                <td id="row-options">
+                  <img src="../../../assets/images/icons/trash-icon.png" alt="Delete Icon" (click)="deleteAlarm(alarm)" class="more-info">          
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <hr>
+        <mat-dialog-actions style="justify-content: end; padding: 0 20px 15px;">
+            <button mat-dialog-close  class="btn cancel-btn">Close</button>
+        </mat-dialog-actions>
+    </div>
+</div>

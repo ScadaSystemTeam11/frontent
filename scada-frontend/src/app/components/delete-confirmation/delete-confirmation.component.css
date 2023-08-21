@@ -1,0 +1,75 @@
+.modal-container{
+    overflow: hidden;
+    background-color: white;
+}
+
+.modal-header{
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+}
+
+.modal-title{
+    width: -webkit-fill-available;
+    text-align: left;
+    margin: 0;
+    font-size: 30px;
+    padding: 10px;
+    font-weight: 600;
+    color: var(--navy-blue);
+}
+
+.x-btn{
+    border: none;
+    background-color: white;
+    font-size: 40px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.x-btn:focus{
+    outline: none;
+}
+.x-btn:hover{
+    opacity: 0.4;
+}
+
+.close-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+}
+
+.modal-footer{
+    justify-content: right;
+}
+
+.modal-body{
+    padding: 0 !important;
+}
+
+.delete-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.cancel-btn{
+    background-color: var(--gray);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.delete-details{
+    padding: 20px 30px;
+}
+
+.delete-details p,
+.delete-details mat-chip-listbox{
+    font-size: 18px;
+    padding: 5px;
+}
