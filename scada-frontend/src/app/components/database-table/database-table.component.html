@@ -22,7 +22,21 @@
       <tr *ngFor="let tag of tags">
         <td>{{tag.tagName}}</td>
         <td>{{tag.description}}</td>
-        <td>{{tag.currentValue}}</td>
+        <td><ng-container *ngIf="!editModeMap.get(tag.id); else editInput">
+          {{ tag.currentValue }}
+        </ng-container>
+        <ng-template #editInput>
+          <input
+            type="number"
+            [(ngModel)]="tag.currentValue"
+            (blur)="editModeMap.set(tag.id, false); updateTagValue(tag)"
+          />
+        </ng-template>
+          <ng-container *ngIf="isOutput(tag); else notOutputTag">
+            <img src="../../../assets//images/icons/edit-icon.png" alt="Edit icon"  class="more-info" (click)="editModeMap.set(tag.id, true)">
+          </ng-container>
+          <ng-template #notOutputTag></ng-template>
+        </td>
         <td>
           <ng-container *ngIf="isInputTag(tag); else notInputTag">
             <mat-slide-toggle class="slider" [checked]="tag.onOffScan" (click)="setTagScanOnOff(tag)">

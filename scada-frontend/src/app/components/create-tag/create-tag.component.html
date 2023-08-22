@@ -18,24 +18,9 @@
               <td>Description:</td>
               <td><textarea rows="3" [(ngModel)]="description" class="desc-input"></textarea></td>
             </tr>
-            <tr>
-              <td>I/O Address:/td>
-              <td><mat-form-field>
-                <mat-label>Select address: </mat-label>
-                <mat-select [(value)]="ioAddress">
-                  <mat-option *ngFor="let address of ioOptions" [value]="address">
-                    {{address}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </td>
-            </tr>
+
             <!-- Additional content for Input Tags -->
           <ng-container *ngIf="tagType === 'AnalogInput' || tagType === 'DigitalInput'" >
-            <tr>
-              <td>Driver:</td>
-              <td><input type="text" [(ngModel)]="driver"></td>
-            </tr>
             <tr>
               <td>Scan Time:</td>
               <td><input type="number" [(ngModel)]="scanTime"> s</td>

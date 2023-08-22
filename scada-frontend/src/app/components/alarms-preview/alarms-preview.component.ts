@@ -1,9 +1,11 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Alarm } from 'src/app/models/Alarm';
 import { AnalogInput, Tag } from 'src/app/models/Tag';
 import { AlarmService } from 'src/app/services/alarm.service';
 import { TagService } from 'src/app/services/tag.service';
+import { CreateTagComponent } from '../create-tag/create-tag.component';
+import { CreateAlarmComponent } from '../create-alarm/create-alarm.component';
 
 @Component({
   selector: 'app-alarms-preview',
@@ -13,16 +15,21 @@ import { TagService } from 'src/app/services/tag.service';
 export class AlarmsPreviewComponent {
   tag: AnalogInput;
 
-  constructor(private tagService : TagService, private alarmService : AlarmService,  @Inject(MAT_DIALOG_DATA) public data: AnalogInput){
+  constructor(public dialog: MatDialog, private alarmService : AlarmService,  @Inject(MAT_DIALOG_DATA) public data: AnalogInput){
     this.tag = data;
   }
 
-  openCreateAlarm(){
-    
+  openCreateAlarm(){  
+    this.dialog.open(CreateAlarmComponent, {
+      data: this.tag,
+      width: "550px"
+    });
   }
   
   deleteAlarm(alarm: Alarm){
-
+    this.alarmService.deleteAlarm(alarm.id).subscribe((res)=>{
+      console.log(res);
+    })
   }
 
 }

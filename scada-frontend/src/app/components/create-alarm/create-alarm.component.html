@@ -1,0 +1,54 @@
+<div class="modal-container">
+    <div class="modal-header">
+      <h1 mat-dialog-title class="modal-title">Create an Alarm</h1>
+      <button  class="x-btn" mat-dialog-close>&times;</button>
+      <hr>
+    </div>
+  
+    <div mat-dialog-content  class="modal-body">
+      <div class="peview-container">
+        <div class="preview-image"> </div>
+        <div class="preview-details">
+          <table>
+            <tr>
+              <td>Value Limit:</td>
+              <td><input type="number" [(ngModel)]="valueLimit"></td>
+            </tr>
+          
+          <!-- Additional content for Analog Tags -->
+            <tr>
+                <td>Type of Alarm</td>
+                <td>
+                    <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="alarmType">
+                    <mat-radio-button class="example-radio-button" [value]="1">Higher</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="0">Lower</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td>Alarm Priority:</td>
+                <td>
+                    <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="alarmPriority">
+                    <mat-radio-button class="example-radio-button" [value]="2">High</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="1">Medium</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="0">Low</mat-radio-button>
+                    </mat-radio-group>
+                </td>
+            </tr>
+         
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <mat-dialog-actions style="justify-content: end; padding: 0 20px 15px;">
+      <button mat-dialog-close  class="btn cancel-btn">Close</button>
+      <button mat-dialog-close class="btn save-btn" (click)="createAlarm()">Create Alarm</button>
+    </mat-dialog-actions>
+  </div>

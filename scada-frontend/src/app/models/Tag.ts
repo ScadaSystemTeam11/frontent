@@ -124,5 +124,48 @@ export class OutputTagValueDTO {
   }
 }
 
+export class DigitalOutputDTO {
+  constructor(
+    public Id: string,
+    public Name: string,
+    public Description: string,
+    public InitialValue: number
+  ) {}
+}
+
+export class DigitalInputDTO {
+  constructor(
+    public Id: string,
+    public Name: string,
+    public Description: string,
+    public ScanTime: number,
+    public CurrentValue: number
+  ) {}
+}
+
+export class AnalogOutputDTO {
+  constructor(
+    public Id: string,
+    public Name: string,
+    public Description: string,
+    public InitialValue: number,
+    public LowLimit: number,
+    public HighLimit: number,
+    public Units: string
+  ) {}
+}
+
+export class AnalogInputDTO {
+  constructor(
+    public Id: string,
+    public Name: string,
+    public Description: string,
+    public CurrentValue: number,
+    public LowLimit: number,
+    public HighLimit: number,
+    public Units: string,
+    public ScanTime: number
+  ) {}
+}
   
   

@@ -1,0 +1,81 @@
+.select-owner{
+    text-align: center;
+}
+mat-form-field{
+    width: 300px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    flex-direction: column;
+}
+
+.row{
+    margin: auto;
+}
+
+.album{
+    display: flex;
+    justify-content: center;
+    margin: 10px 15px;
+    border: var(--light-gray) 4px solid;
+    padding: 10px 20px;
+    border-radius: 13px;
+
+}
+
+.album-img{
+    cursor: pointer;
+}
+
+.album-img:hover{
+    opacity: 0.8;
+}
+
+.album-metadata{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+    margin-right: 7px;
+}
+
+.album-name{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.album-name:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.album-header{
+    display: flex;
+}
+
+.more-options{
+    rotate: 90deg;
+    opacity: 0.9;
+    height: 22px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.more-options:hover{
+    opacity: 0.6;
+}
+
+.save-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.save-btn:hover{
+    opacity: 0.6;
+}

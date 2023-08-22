@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
-import { AnalogInput, DigitalInput, Tag, TagType } from 'src/app/models/Tag';
+import { AnalogInput, DigitalInput, InputTagDTO, OutputTagValueDTO, Tag, TagType } from 'src/app/models/Tag';
 import { TagService } from 'src/app/services/tag.service';
 import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 import { timeout } from 'rxjs';
@@ -18,6 +18,7 @@ import { AlarmsPreviewComponent } from '../alarms-preview/alarms-preview.compone
 })
 export class DatabaseTableComponent {
   tags : any[];
+  editModeMap: Map<number, boolean> = new Map();
 
   constructor(private tagService: TagService, public dialog: MatDialog, private cdRef: ChangeDetectorRef){
     this.tags = [];
@@ -91,7 +92,16 @@ export class DatabaseTableComponent {
   }
 
   setTagScanOnOff(tag : any){
-
+    let type = null;
+    if(tag.alarms != undefined){
+      type = "analog";
+    }else{
+      type = "digital";
+    }
+    const inTag = new InputTagDTO(tag.id, !tag.onOffScan, type)
+    this.tagService.setTagScanOnOff(inTag).subscribe((res)=>{
+      console.log(res);
+    })
   }
 
   openAlarmsMenu(tag : any){
@@ -101,4 +111,23 @@ export class DatabaseTableComponent {
     });
   }
 
+  isOutput(tag : any){
+    if(tag.initialValue != undefined) return true
+    else return false;
+  }
+
+  
+  updateTagValue(tag: any) {
+    console.log(tag.currentValue);
+    let type = null;
+    if(tag.highLimit != undefined){
+      type = "analog";
+    }else{
+      type = "digital";
+    }
+    const newOutput = new OutputTagValueDTO(tag.id, type, tag.currentValue );
+    this.tagService.updateOutputTagValue(newOutput).subscribe((res) => {
+      console.log('Tag value updated:', res);
+    });
+  }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AnalogInput, AnalogOutput, DigitalInput, DigitalOutput, InputTagDTO, OutputTagValueDTO, Tag, TagType } from '../models/Tag';
+import { AnalogInput, AnalogInputDTO, AnalogOutput, AnalogOutputDTO, DigitalInput, DigitalInputDTO, DigitalOutput, DigitalOutputDTO, InputTagDTO, OutputTagValueDTO, Tag, TagType } from '../models/Tag';
 import { BehaviorSubject } from 'rxjs';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 
@@ -57,16 +57,16 @@ export class TagService {
     return this.http.delete(this.api + `/DeleteDigitalOutputTag?id=${id}`);
   }
 
-  createAnalogInputTag(dto: AnalogInput) {
+  createAnalogInputTag(dto: AnalogInputDTO) {
+    return this.http.post(this.api + '/CreateAnalogInputTag', dto);
+  }
+  createAnalogOutputTag(dto: AnalogOutputDTO) {
     return this.http.post(this.api + '/CreateAnalogOutputTag', dto);
   }
-  createAnalogOutputTag(dto: AnalogOutput) {
-    return this.http.post(this.api + '/CreateAnalogOutputTag', dto);
-  }
-  createDigitalInputTag(dto: DigitalInput) {
+  createDigitalInputTag(dto: DigitalInputDTO) {
     return this.http.post(this.api + '/CreateDigitalInputTag', dto);
   }
-  createDigitalOutputTag(dto: DigitalOutput) {
+  createDigitalOutputTag(dto: DigitalOutputDTO) {
     return this.http.post(this.api + '/CreateDigitalOutputTag', dto);
   }
   

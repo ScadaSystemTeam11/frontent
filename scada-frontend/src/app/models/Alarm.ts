@@ -1,12 +1,12 @@
 export enum AlarmPriority {
-  LOW = 'LOW',
-  MEDIUM = 'MEDIUM',
-  HIGH = 'HIGH'
+  LOW = 0,
+  MEDIUM = 1,
+  HIGH = 2
 }
 
 export enum AlarmType {
-  LOWER = 'LOWER',
-  HIGHER = 'HIGHER'
+  LOWER = 0,
+  HIGHER = 1
 }
 
 export class Alarm {
@@ -46,5 +46,27 @@ export class AlarmAlert {
     this.id = id;
     this.alarm = alarm;
     this.timestamp = timestamp;
+  }
+}
+
+export class AlarmDTO {
+  valueLimit: number;
+  type: AlarmType;
+  priority: AlarmPriority;
+  tagID: string;
+  unit: string;
+
+  constructor(
+    valueLimit: number,
+    type: AlarmType,
+    priority: AlarmPriority,
+    tagID: string,
+    unit: string
+  ) {
+    this.valueLimit = valueLimit;
+    this.type = type;
+    this.priority = priority;
+    this.tagID = tagID;
+    this.unit = unit;
   }
 }

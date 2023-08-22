@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="select-owner">
+      <mat-form-field >
+        <mat-label>Select report type: </mat-label>
+        <mat-select [(value)]="selectedReport" >
+          <mat-option *ngFor="let reportType of reportTypes; let i = index" [value]="i" (click)="handleReportSelect()">
+            {{reportType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <ng-container *ngIf="selectedReport == 0 || selectedReport == 2">
+        <form [formGroup]="dateRangeForm" class="example-form">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="startDateControl" placeholder="Start date">
+              <input matEndDate formControlName="endDateControl" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button mat-dialog-close class="btn save-btn" (click)="dateReport()">Get Report</button>
+        </form>
+      </ng-container>
+      
+
+      <ng-container *ngIf="selectedReport == 1">
+        <mat-form-field>
+          <mat-label>Select Priority</mat-label>
+          <mat-select [(value)]="selectedPriority">
+            <mat-option *ngFor="let priority of priorities; let i = index" [value]="i">
+              {{priority}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-dialog-close class="btn save-btn" (click)="priorityReport()">Get Report</button>
+
+      </ng-container>
+
+      <ng-container *ngIf="selectedReport == 5">
+        <form [formGroup]="tagForm" class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Enter Tag ID</mat-label>
+            <input type="text" matInput formControlName="tagIDControl">
+          </mat-form-field>
+          <button mat-dialog-close class="btn save-btn" (click)="tagIDReport()">Get Report</button>
+        </form>
+      </ng-container>
+      
+
+
+    </div>
+  </div>
+  

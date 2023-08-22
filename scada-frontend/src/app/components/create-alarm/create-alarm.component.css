@@ -1,0 +1,135 @@
+.modal-container{
+    overflow: hidden;
+    background-color: white;
+}
+
+.modal-header{
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+}
+
+.modal-title{
+    width: -webkit-fill-available;
+    text-align: left;
+    margin: 0;
+    font-size: 30px;
+    padding: 10px;
+    font-weight: 600;
+    color: var(--navy-blue);
+}
+
+.x-btn{
+    border: none;
+    background-color: white;
+    font-size: 40px;
+    vertical-align: top;
+    cursor: pointer;
+}
+.x-btn:focus{
+    outline: none;
+}
+.x-btn:hover{
+    opacity: 0.4;
+}
+
+.save-btn{
+    background-color: var(--navy-blue);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.cancel-btn{
+    background-color: var(--gray);
+    color: white;
+    padding: 0.5vw 2vw;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.cancel-btn:hover,
+.save-btn:hover{
+    opacity: 0.6;
+}
+
+.modal-footer{
+    justify-content: right;
+}
+
+.modal-body{
+    padding: 0 !important;
+    color: black;
+}
+
+.edit-details{
+    padding: 20px 30px;
+}
+
+.short-details{
+    display: flex;
+}
+
+.edit-details p,
+.edit-details mat-chip-listbox{
+    font-size: 18px;
+    padding: 5px;
+}
+
+.data{
+    margin-left: 20px;
+}
+
+.tag{
+    padding-left: 10px !important;
+}
+
+.edit-icon{
+    height: 25px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+table tr td:first-child{
+    padding: 10px 5px;
+}
+table tr td:nth-child(2){
+    padding: 10px 5px 10px 40px;
+    width: 100%;
+}
+
+.chips{
+    display: flex;
+    align-items: center;
+}
+
+.name-input,
+.name-input:focus-visible{
+    width: -webkit-fill-available;
+    border: none;
+    border-bottom: var(--light-blue) 2px solid;
+    outline: none;
+}
+
+.desc-input,
+.desc-input:focus-visible{
+    width: -webkit-fill-available;
+    outline: none;
+    border: var(--light-blue) 2px solid;
+    border-radius: 3px;
+
+}
+
+.mdc-evolution-chip-set__chips{
+    align-items: center !important;
+}
+
+.tag-input,
+.tag-input:focus-visible{
+    outline: none;
+    border: none;
+    border-bottom: var(--light-blue) 2px solid;
+    padding: 10px;
+    margin-top: 10px;
+}

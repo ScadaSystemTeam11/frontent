@@ -28,6 +28,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AlarmsPreviewComponent } from './components/alarms-preview/alarms-preview.component';
 import { AlertedAlarmsComponent } from './components/alerted-alarms/alerted-alarms.component';
+import { ReportComponent } from './components/report/report.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { CreateAlarmComponent } from './components/create-alarm/create-alarm.component';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 
 
 @NgModule({
@@ -47,9 +55,15 @@ import { AlertedAlarmsComponent } from './components/alerted-alarms/alerted-alar
     TagPreviewComponent,
     CreateTagComponent,
     AlarmsPreviewComponent,
-    AlertedAlarmsComponent
+    AlertedAlarmsComponent,
+    ReportComponent,
+    CreateAlarmComponent
   ],
   imports: [
+    MatRadioModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatSlideToggleModule,
     MatSelectModule,
     MatIconModule,
