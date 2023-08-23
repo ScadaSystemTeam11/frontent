@@ -49,7 +49,54 @@
           <button mat-dialog-close class="btn save-btn" (click)="tagIDReport()">Get Report</button>
         </form>
       </ng-container>
-      
+      <ng-container *ngIf="generateReport && (selectedReport == 5 || selectedReport == 2 || selectedReport == 4 || selectedReport == 3 )">
+          <table class="trending-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Tag Name</th>
+                    <th>Tag ID</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tag of tags">
+                    <td>{{tag.id}}</td>
+                    <td>{{tag.timestamp}}</td>
+                    <td>{{tag.tagName}}</td>
+                    <td>{{tag.tagID}}</td>
+                    <td>{{tag.value}}</td>
+                </tr>
+            </tbody>
+        </table>   
+      </ng-container>
+      <ng-container *ngIf="generateReport && (selectedReport == 1 || selectedReport == 0)">
+        <table class="trending-table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Timestamp</th>
+                  <th>Tag ID</th>
+                  <th>Alarm ID</th>
+                  <th>Type</th>
+                  <th>Priority</th>
+                  <th>Value Limit</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let alert of alerts">
+                  <td>{{alert.id}}</td>
+                  <td>{{alert.timestamp}}</td>
+                  <td>{{alert.alarm.tagID}}</td>
+                  <td>{{alert.alarm.id}}</td>
+                  <td>{{alert.alarm.type}}</td>
+                  <td>{{alert.alarm.priority}}</td>
+                  <td>{{alert.alarm.limit}}</td>
+              </tr>
+          </tbody>
+      </table>   
+    </ng-container>
 
 
     </div>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReportService } from 'src/app/services/report.service';
 
@@ -8,6 +8,8 @@ import { ReportService } from 'src/app/services/report.service';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent {
+  tags : any[] = [];
+  alerts : any[] = [];
   tagForm: FormGroup;
   dateRangeForm: FormGroup;
   selectedReport: number = 0;
@@ -25,7 +27,7 @@ export class ReportComponent {
 
 
   
-  constructor(private fb: FormBuilder,private reportService : ReportService){
+  constructor(private fb: FormBuilder,private reportService : ReportService, private cdRef: ChangeDetectorRef){
     this.tagForm = this.fb.group({
       tagIDControl: ['', Validators.required]
     });
@@ -36,17 +38,22 @@ export class ReportComponent {
   }
 
   handleReportSelect(){
-    this.generateReport = false;
     if(this.selectedReport == 3){
-      this.reportService.getLatestAIReport().subscribe((res) =>{
+      this.reportService.getLatestAIReport().subscribe((res:any) =>{
         console.log(res);
+        this.tags = res;
         this.generateReport = true;
+        this.cdRef.detectChanges();
+
       })
     }
     if(this.selectedReport == 4){
-      this.reportService.getLatestDIReport().subscribe((res) =>{
+      this.reportService.getLatestDIReport().subscribe((res : any) =>{
         console.log(res);
+        this.tags = res;
         this.generateReport = true;
+        this.cdRef.detectChanges();
+
       })
     }
   }
@@ -59,23 +66,29 @@ export class ReportComponent {
     if (this.selectedReport == 0) {
       this.reportService.getDateRangeAlarmReport(startDateValue, endDateValue).subscribe((res) =>{
         console.log(res);
+        this.alerts = res;
         this.generateReport = true;
+        this.cdRef.detectChanges();
 
       })
     }
     if(this.selectedReport == 2){
       this.reportService.getDateRangeTagReport(startDateValue, endDateValue).subscribe((res) =>{
         console.log(res);
+        this.tags = res;
         this.generateReport = true;
+        this.cdRef.detectChanges();
 
       })
 
     }
   }
   priorityReport(){
-    this.reportService.getPriorityReport(this.selectedPriority).subscribe((res) =>{
+    this.reportService.getPriorityReport(this.selectedPriority).subscribe((res : any) =>{
       console.log(res);
+      this.alerts = res;
       this.generateReport = true;
+      this.cdRef.detectChanges();
 
     })
   }
@@ -83,9 +96,12 @@ export class ReportComponent {
   tagIDReport(){
     const tagIDValue = this.tagForm.get('tagIDControl')?.value;
     console.log(tagIDValue);
-    this.reportService.getTagsByIDReport(tagIDValue).subscribe((res) =>{
+    this.reportService.getTagsByIDReport(tagIDValue).subscribe((res : any) =>{
       console.log(res);
+      
+      this.tags = res;
       this.generateReport = true;
+      this.cdRef.detectChanges();
     })
   }
 }

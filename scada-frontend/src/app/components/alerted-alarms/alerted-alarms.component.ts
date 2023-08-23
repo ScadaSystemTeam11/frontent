@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AlarmAlert } from 'src/app/models/Alarm';
 import { AlarmService } from 'src/app/services/alarm.service';
+import { ReportService } from 'src/app/services/report.service';
 
 @Component({
   selector: 'app-alerted-alarms',
@@ -10,7 +11,8 @@ import { AlarmService } from 'src/app/services/alarm.service';
 export class AlertedAlarmsComponent {
   alarmAlerts : any[] = [];
   
-  public constructor(private alarmService: AlarmService, private cdRef: ChangeDetectorRef){
+  public constructor(private reportService : ReportService, private alarmService: AlarmService, private cdRef: ChangeDetectorRef){
+    this.getRecentAlarms();
     this.subscribeToAlarmAlerted();
   }
 
@@ -22,5 +24,19 @@ export class AlertedAlarmsComponent {
     });
   }
   
+  getRecentAlarms(){
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    this.reportService.getDateRangeAlarmReport(yesterday, today).subscribe((res) =>{
+      console.log(res);
+      this.alarmAlerts = res;
+    })
+  }
+
+  isUpercase(alarm : any){
+    if(alarm.Alarm != undefined) return true;
+    else return false;
+  }
 
 }

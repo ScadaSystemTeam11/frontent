@@ -21,7 +21,7 @@ export class ReportService {
   }
 
   getPriorityReport(priority : number){
-    return this.http.get(this.api + `/TimePeriodAlarmReport?priority=${priority}`);
+    return this.http.get(this.api + `/PriorityReport?priority=${priority}`);
   }
 
   getDateRangeTagReport(start: Date, end: Date): Observable<any> {
