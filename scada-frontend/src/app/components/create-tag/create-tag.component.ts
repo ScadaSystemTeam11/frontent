@@ -21,18 +21,22 @@ export class CreateTagComponent {
   highLimit : number = 0;
   units : string = "";
   initialValue : number = 0;
-  ioOptions : string[]
+  ioOptionsRTU : string[]
+  ioOptionsSimulation : string[]
+  selectedDriver : string = "";
+  selectedIOAddress : string = "";
 
 
   constructor(private tagService : TagService, @Inject(MAT_DIALOG_DATA) public data: string){
-    this.ioOptions = ["C", "S", "R"];
+    this.ioOptionsRTU = ["C", "S", "R"];
+    this.ioOptionsSimulation = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
     this.tagType = data;
   }
 
   createTag(){
     if(this.tagType == "AnalogInput"){
       const aiTag = new AnalogInputDTO(uuidv4(), this.name, this.description, this.lowLimit, this.lowLimit,
-      this.highLimit, this.units, this.scanTime);
+      this.highLimit, this.units, this.scanTime, this.selectedDriver, this.selectedIOAddress);
       this.tagService.createAnalogInputTag(aiTag).subscribe((res)=>{
         console.log(res);
       });
@@ -45,7 +49,8 @@ export class CreateTagComponent {
       });
     }
     if(this.tagType == "DigitalInput"){
-      const diTag = new DigitalInputDTO(uuidv4(), this.name, this.description,this.scanTime, 1);
+      const diTag = new DigitalInputDTO(uuidv4(), this.name, this.description,this.scanTime, 0, this.selectedDriver, this.selectedIOAddress);
+      console.log(diTag);
       this.tagService.createDigitalInputTag(diTag).subscribe((res)=>{
         console.log(res);
       });

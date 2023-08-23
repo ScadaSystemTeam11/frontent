@@ -25,6 +25,35 @@
               <td>Scan Time:</td>
               <td><input type="number" [(ngModel)]="scanTime"> s</td>
             </tr>
+            <tr>
+              <td>Driver:</td>
+              <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="selectedDriver">
+                    <mat-radio-button class="example-radio-button" [value]="'Simulation'">Simulation</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="'RTU'">RTU</mat-radio-button>
+              </mat-radio-group>
+            </tr>
+              <tr>
+                <td>I/O Address:</td>
+                  <mat-form-field >
+                    <mat-select [(value)]="selectedIOAddress" >
+                      <ng-container *ngIf="selectedDriver == 'Simulation'">
+
+                      <mat-option *ngFor="let ioAddress of ioOptionsSimulation" [value]="ioAddress">
+                        {{ioAddress}}
+                      </mat-option>
+                      </ng-container>
+                      <ng-container *ngIf="selectedDriver == 'RTU'">
+                        <mat-option *ngFor="let ioAddress of ioOptionsRTU" [value]="ioAddress">
+                          {{ioAddress}}
+                        </mat-option>
+                        </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+              </tr>
+
           </ng-container>
           
           <!-- Additional content for Analog Tags -->

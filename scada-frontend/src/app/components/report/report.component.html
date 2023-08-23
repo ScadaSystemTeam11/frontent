@@ -49,7 +49,7 @@
           <button mat-dialog-close class="btn save-btn" (click)="tagIDReport()">Get Report</button>
         </form>
       </ng-container>
-      <ng-container *ngIf="generateReport && (selectedReport == 5 || selectedReport == 2 || selectedReport == 4 || selectedReport == 3 )">
+      <ng-container *ngIf="generateReport && (selectedReport == 5 || selectedReport == 2)">
           <table class="trending-table">
             <thead>
                 <tr>
@@ -92,11 +92,43 @@
                   <td>{{alert.alarm.id}}</td>
                   <td>{{alert.alarm.type}}</td>
                   <td>{{alert.alarm.priority}}</td>
-                  <td>{{alert.alarm.limit}}</td>
+                  <td>{{alert.alarm.valueLimit}}</td>
               </tr>
           </tbody>
       </table>   
     </ng-container>
+    <ng-container *ngIf="generateReport && (    selectedReport == 4 || selectedReport == 3 
+    )">
+      <table class="trending-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th>Tag Name</th>
+                <th>Tag ID</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tag of tags">
+                <td>{{tag.lastTagChange.id}}</td>
+                <td>{{tag.lastTagChange.timestamp}}</td>
+                <ng-container *ngIf="(selectedReport == 3 )">
+
+                <td>{{tag.analogInput.tagName}}</td>
+                <td>{{tag.analogInput.id}}</td>
+                <td>{{tag.analogInput.currentValue}}</td>
+                </ng-container>
+                <ng-container *ngIf="(selectedReport == 4 )">
+
+                  <td>{{tag.digitalInput.tagName}}</td>
+                  <td>{{tag.digitalInput.id}}</td>
+                  <td>{{tag.digitalInput.currentValue}}</td>
+                  </ng-container>
+            </tr>
+        </tbody>
+    </table>   
+  </ng-container>
 
 
     </div>

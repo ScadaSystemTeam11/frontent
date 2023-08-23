@@ -139,7 +139,9 @@ export class DigitalInputDTO {
     public Name: string,
     public Description: string,
     public ScanTime: number,
-    public CurrentValue: number
+    public CurrentValue: number,
+    public Driver : string,
+    public IOAddress : string
   ) {}
 }
 
@@ -164,7 +166,9 @@ export class AnalogInputDTO {
     public LowLimit: number,
     public HighLimit: number,
     public Units: string,
-    public ScanTime: number
+    public ScanTime: number,
+    public Driver : string,
+    public IOAddress : string
   ) {}
 }
   
