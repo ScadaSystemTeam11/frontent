@@ -32,4 +32,13 @@ export class AlarmsPreviewComponent {
     })
   }
 
+  getPriority(priority : number){
+    if(priority == 0) return "LOW";
+    if(priority == 1) return "MEDIUM";
+    return "HIGH"
+  }
+  getType(type : number){
+    if(type == 0) return "LOWER";
+    return "HIGHER";
+  }
 }

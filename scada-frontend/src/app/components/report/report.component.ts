@@ -56,6 +56,23 @@ export class ReportComponent {
 
       })
     }
+
+  }
+
+  getPriority(priority : number){
+    if(priority == 0) return "LOW";
+    if(priority == 1) return "MEDIUM";
+    return "HIGH"
+  }
+  getType(type : number){
+    if(type == 0) return "LOWER";
+    return "HIGHER";
+  }
+  formatDate(dateString : string){
+    const date = new Date(dateString);
+    const formattedDate = date.toUTCString();
+    console.log(formattedDate);
+    return formattedDate;
   }
 
   dateReport(){

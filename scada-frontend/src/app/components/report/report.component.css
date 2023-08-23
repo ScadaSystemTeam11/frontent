@@ -68,16 +68,19 @@ mat-form-field{
     opacity: 0.6;
 }
 
-.save-btn{
-    background-color: var(--navy-blue);
-    color: white;
-    padding: 0.5vw 2vw;
-    font-size: 25px;
-    margin-right: 10px;
+.cancel-btn{
+  background-color: var(--gray);
+  color: white;
+  padding: 0.5vw 2vw;
+  font-size: 25px;
+  margin-right: 10px;
+  margin-left: 50px;
+  vertical-align: super;
 }
 
+.cancel-btn:hover,
 .save-btn:hover{
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .trending-table {
@@ -125,4 +128,8 @@ mat-form-field{
 
   .trending-table {
     position: relative;
+  }
+
+  .form{
+    text-align: center;
   }

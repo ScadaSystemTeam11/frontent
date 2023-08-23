@@ -22,8 +22,8 @@
             <tbody>
               <tr *ngFor="let alarm of tag.alarms">
                 <td>{{alarm.id}}</td>
-                <td>{{alarm.type}}</td>
-                <td>{{alarm.priority}}</td>
+                <td>{{getType(alarm.type)}}</td>
+                <td>{{getPriority(alarm.priority)}}</td>
                 <td>{{alarm.valueLimit}}</td>
                 <td>{{alarm.unit}}</td>
                 <td id="row-options">

@@ -22,7 +22,7 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
-          <button mat-dialog-close class="btn save-btn" (click)="dateReport()">Get Report</button>
+          <button mat-dialog-close class="btn cancel-btn" (click)="dateReport()">Get Report</button>
         </form>
       </ng-container>
       
@@ -36,7 +36,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-dialog-close class="btn save-btn" (click)="priorityReport()">Get Report</button>
+        <button mat-dialog-close class="btn cancel-btn" (click)="priorityReport()">Get Report</button>
 
       </ng-container>
 
@@ -46,7 +46,7 @@
             <mat-label>Enter Tag ID</mat-label>
             <input type="text" matInput formControlName="tagIDControl">
           </mat-form-field>
-          <button mat-dialog-close class="btn save-btn" (click)="tagIDReport()">Get Report</button>
+          <button mat-dialog-close class="btn cancel-btn" (click)="tagIDReport()">Get Report</button>
         </form>
       </ng-container>
       <ng-container *ngIf="generateReport && (selectedReport == 5 || selectedReport == 2)">
@@ -63,7 +63,7 @@
             <tbody>
                 <tr *ngFor="let tag of tags">
                     <td>{{tag.id}}</td>
-                    <td>{{tag.timestamp}}</td>
+                    <td>{{formatDate(tag.timestamp)}}</td>
                     <td>{{tag.tagName}}</td>
                     <td>{{tag.tagID}}</td>
                     <td>{{tag.value}}</td>
@@ -87,11 +87,11 @@
           <tbody>
               <tr *ngFor="let alert of alerts">
                   <td>{{alert.id}}</td>
-                  <td>{{alert.timestamp}}</td>
+                  <td>{{formatDate(alert.timestamp)}}</td>
                   <td>{{alert.alarm.tagID}}</td>
                   <td>{{alert.alarm.id}}</td>
-                  <td>{{alert.alarm.type}}</td>
-                  <td>{{alert.alarm.priority}}</td>
+                  <td>{{getType(alert.alarm.type)}}</td>
+                  <td>{{getPriority(alert.alarm.priority)}}</td>
                   <td>{{alert.alarm.valueLimit}}</td>
               </tr>
           </tbody>
@@ -112,7 +112,7 @@
         <tbody>
             <tr *ngFor="let tag of tags">
                 <td>{{tag.lastTagChange.id}}</td>
-                <td>{{tag.lastTagChange.timestamp}}</td>
+                <td>{{formatDate(tag.lastTagChange.timestamp)}}</td>
                 <ng-container *ngIf="(selectedReport == 3 )">
 
                 <td>{{tag.analogInput.tagName}}</td>
