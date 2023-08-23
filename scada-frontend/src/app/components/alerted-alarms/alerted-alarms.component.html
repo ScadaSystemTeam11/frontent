@@ -1,0 +1,29 @@
+<div class="container"> 
+    <div class="row" style="justify-content: center;">
+      <div *ngFor="let alert of alarmAlerts" class="referral" >
+        <div class="referral-metadata">
+          <div class="referral-header">
+            <p class="referral-name"  *ngIf="isUpercase(alert)">Alert ID: {{alert.ID}}</p>
+            <p class="referral-name"  *ngIf="!isUpercase(alert)">Alert ID: {{alert.id}}</p>
+          </div>
+          <div class="referral-body">
+            <ng-container *ngIf="isUpercase(alert)" >
+              <p>For Analog Tag: {{alert.Alarm.TagID}}</p>
+              <p>Alarm ID: {{alert.Alarm.ID}}</p>
+              <p>Time: {{formatDate(alert.Timestamp)}}</p>
+              <p>Alarm Priority: {{alert.Alarm.Priority}}</p>
+              <p>Alarm Type: {{alert.Alarm.Type}}</p>  
+            </ng-container>
+            <ng-container *ngIf="!isUpercase(alert)" >
+              <p>For Analog Tag: {{alert.alarm.tagID}}</p>
+              <p>Alarm ID: {{alert.alarm.id}}</p>
+              <p>Time: {{formatDate(alert.timestamp)}}</p>
+              <p>Alarm Priority: {{getPriority(alert.alarm.priority) }}</p>
+              <p>Alarm Type: {{getType(alert.alarm.type)}}</p>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

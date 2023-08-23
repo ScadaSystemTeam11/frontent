@@ -1,0 +1,28 @@
+<div>
+    <div class="register-container">
+            <h4 class="register-title gothic-a1">Register</h4>
+            <hr>
+        <div class="register-body">
+            <p class="register-subtitle open-sans">Hey! Enter your credentials to create a new account!</p>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="credentials">
+                    <div>
+                        <input type="text" id="username" placeholder="Username" formControlName="username" class="open-sans">
+                        <p *ngIf="registerForm?.get('username')?.invalid && registerForm?.get('username')?.touched" class="warning">!</p>
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="Password" formControlName="password" class="open-sans">
+                        <p *ngIf="registerForm?.get('password')?.invalid && registerForm?.get('password')?.touched" class="warning">!
+                        </p>
+                    </div>
+                </div>
+                <p class="login open-sans" (click)="close()">Already have an account? <b>Login</b></p>
+                <hr>
+                <div class="register-footer">
+                    <button type="button" type="submit" class="register-btn gothic-a1">Register</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

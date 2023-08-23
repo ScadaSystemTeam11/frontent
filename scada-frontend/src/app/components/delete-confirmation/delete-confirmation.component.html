@@ -1,0 +1,18 @@
+<div class="modal-container">
+    <div class="modal-header">
+        <h1  mat-dialog-title class="modal-title">Delete?</h1>
+        <button type="button" class="x-btn" mat-dialog-close>&times;</button>
+        <hr>
+    </div>
+    <div class="modal-body">
+        <div class="delete-details">
+            <p>Are you sure you want to delete {{tag.tagName}}? </p>
+            <p>This action is permament and cannot be undone</p>
+        </div>
+        <hr>
+        <mat-dialog-actions style="justify-content: end; padding: 0 20px 15px;">
+            <button mat-dialog-close  class="btn cancel-btn">Close</button>
+            <button mat-dialog-close  class="btn delete-btn" (click)="delete()">Delete</button>
+        </mat-dialog-actions>
+    </div>
+</div>

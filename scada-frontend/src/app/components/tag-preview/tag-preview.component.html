@@ -1,0 +1,97 @@
+<div class="modal-container">
+    <div class="modal-header">
+      <h1 mat-dialog-title class="modal-title">Details</h1>
+      <button  class="x-btn" mat-dialog-close>&times;</button>
+      <hr>
+    </div>
+  
+    <div mat-dialog-content  class="modal-body">
+      <div class="peview-container">
+        <div class="preview-image"> </div>
+        <div class="preview-details">
+          <table>
+            <tr>
+              <td>Tag name:</td>
+              <td>{{tag.tagName}}</td>
+            </tr>
+            <tr>
+              <td>ID:</td>
+              <td>{{tag.id}}</td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td>{{tag.description}}</td>
+            </tr>
+            <tr>
+              <td>I/O Address:</td>
+              <td>{{tag.ioAddress}}</td>
+            </tr>
+            <tr>
+              <td>Current Value:</td>
+              <td>{{tag.currentValue}}</td>
+            </tr>
+
+            <!-- Additional content for AnalogInput -->
+          <ng-container *ngIf="tagType === 'AnalogInput'">
+            <tr>
+              <td>Driver:</td>
+              <td>{{ tag.driver }}</td>
+            </tr>
+            <tr>
+              <td>Scan Time:</td>
+              <td>{{ tag.scanTime }} s</td>
+            </tr>
+            <tr>
+              <td>Low Limit:</td>
+              <td>{{ tag.lowLimit }} {{tag.units}}</td>
+            </tr>
+            <tr>
+              <td>High Limit:</td>
+              <td>{{ tag.highLimit }} {{tag.units}}</td>
+            </tr>
+          </ng-container>
+          
+          <!-- Additional content for DigitalInput -->
+          <ng-container *ngIf="tagType === 'DigitalInput'">
+            <tr>
+              <td>Scan Time:</td>
+              <td>{{ tag.scanTime }} s</td>
+            </tr>
+            <tr>
+              <td>Driver:</td>
+              <td>{{ tag.driver }}</td>
+            </tr>
+          </ng-container>
+
+          <!-- Additional content for AnalogOutput -->
+          <ng-container *ngIf="tagType === 'AnalogOutput'">
+            <tr>
+              <td>Initial Value:</td>
+              <td>{{ tag.initialValue }} {{tag.units}}</td>
+            </tr>
+            <tr>
+              <td>Low Limit:</td>
+              <td>{{ tag.lowLimit }} {{tag.units}}</td>
+            </tr>
+            <tr>
+              <td>High Limit:</td>
+              <td>{{ tag.highLimit }} {{tag.units}}</td>
+            </tr>
+          </ng-container>
+          
+          <!-- Additional content for DigitalOutput -->
+          <ng-container *ngIf="tagType === 'DigitalOutput'">
+            <tr>
+              <td>Initial Value:</td>
+              <td>{{ tag.initialValue }}</td>
+            </tr>
+          </ng-container>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <mat-dialog-actions style="justify-content: end; padding: 0 20px 15px;">
+      <button mat-dialog-close  class="btn close-btn">Close</button>
+    </mat-dialog-actions>
+  </div>

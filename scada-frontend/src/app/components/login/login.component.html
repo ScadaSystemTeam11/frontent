@@ -1,0 +1,18 @@
+<div class="login-container ">
+    <h4 class="login-title gothic-a1">Login</h4>
+    <hr>
+  <div class="login-body">
+          <div class="text-center">
+              <p class="login-subtitle open-sans">Hey! Enter your credentials to sign in to your account!</p>
+              <div class="credentials">
+                <input type="text" name = "email" id="email_login" placeholder="Username" class="open-sans" [(ngModel)]="email">
+                <input type="password" name = "password" id="password_login" placeholder="Password" class="open-sans" [(ngModel)]="password">
+              </div>
+              <p class="open-sans invalid" *ngIf="invalidCredentials">Invalid email or password</p>
+              <p class="register open-sans" (click)="close()">Don't have an account?<b> Register now</b></p>
+          </div>
+  </div>
+  <div class="login-footer">
+    <button type="button" class="login-btn gothic-a1" (click)="login()">Login</button>
+  </div>
+</div>

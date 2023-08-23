@@ -1,0 +1,92 @@
+<div class="modal-container">
+    <div class="modal-header">
+      <h1 mat-dialog-title class="modal-title">Create {{tagType}}</h1>
+      <button  class="x-btn" mat-dialog-close>&times;</button>
+      <hr>
+    </div>
+  
+    <div mat-dialog-content  class="modal-body">
+      <div class="peview-container">
+        <div class="preview-image"> </div>
+        <div class="preview-details">
+          <table>
+            <tr>
+              <td>Tag name:</td>
+              <td><input type="text" [(ngModel)]="name"></td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td><textarea rows="3" [(ngModel)]="description" class="desc-input"></textarea></td>
+            </tr>
+
+            <!-- Additional content for Input Tags -->
+          <ng-container *ngIf="tagType === 'AnalogInput' || tagType === 'DigitalInput'" >
+            <tr>
+              <td>Scan Time:</td>
+              <td><input type="number" [(ngModel)]="scanTime"> s</td>
+            </tr>
+            <tr>
+              <td>Driver:</td>
+              <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    [(ngModel)]="selectedDriver">
+                    <mat-radio-button class="example-radio-button" [value]="'Simulation'">Simulation</mat-radio-button>
+                    <mat-radio-button class="example-radio-button" [value]="'RTU'">RTU</mat-radio-button>
+              </mat-radio-group>
+            </tr>
+              <tr>
+                <td>I/O Address:</td>
+                  <mat-form-field >
+                    <mat-select [(value)]="selectedIOAddress" >
+                      <ng-container *ngIf="selectedDriver == 'Simulation'">
+
+                      <mat-option *ngFor="let ioAddress of ioOptionsSimulation" [value]="ioAddress">
+                        {{ioAddress}}
+                      </mat-option>
+                      </ng-container>
+                      <ng-container *ngIf="selectedDriver == 'RTU'">
+                        <mat-option *ngFor="let ioAddress of ioOptionsRTU" [value]="ioAddress">
+                          {{ioAddress}}
+                        </mat-option>
+                        </ng-container>
+                    </mat-select>
+                  </mat-form-field>
+              </tr>
+
+          </ng-container>
+          
+          <!-- Additional content for Analog Tags -->
+          <ng-container *ngIf="tagType === 'AnalogInput' || tagType === 'AnalogOutput'">
+            <tr>
+                <td>Low Limit:</td>
+                <td><input type="number" [(ngModel)]="lowLimit"></td>
+            </tr>
+            <tr>
+                <td>High Limit:</td>
+                <td><input type="number" [(ngModel)]="highLimit"></td>
+            </tr>
+            <tr>
+                <td>Units:</td>
+                <td><input type="text" [(ngModel)]="units"></td>
+            </tr>
+          </ng-container>
+
+          <!-- Additional content for Output Tag -->
+
+          <ng-container *ngIf="tagType === 'DigitalOutput' || tagType === 'AnalogOutput'">
+            <tr>
+              <td>Initial Value:</td>
+              <td><input type="number" [(ngModel)]="initialValue"></td>
+            </tr>
+          </ng-container>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <mat-dialog-actions style="justify-content: end; padding: 0 20px 15px;">
+      <button mat-dialog-close  class="btn cancel-btn">Close</button>
+      <button mat-dialog-close class="btn save-btn" (click)="createTag()">Create Tag</button>
+    </mat-dialog-actions>
+  </div>

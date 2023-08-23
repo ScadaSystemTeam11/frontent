@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="select-owner">
+      <mat-form-field >
+        <mat-label>Select report type: </mat-label>
+        <mat-select [(value)]="selectedReport" >
+          <mat-option *ngFor="let reportType of reportTypes; let i = index" [value]="i" (click)="handleReportSelect()">
+            {{reportType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <ng-container *ngIf="selectedReport == 0 || selectedReport == 2">
+        <form [formGroup]="dateRangeForm" class="example-form">
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate formControlName="startDateControl" placeholder="Start date">
+              <input matEndDate formControlName="endDateControl" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button mat-dialog-close class="btn cancel-btn" (click)="dateReport()">Get Report</button>
+        </form>
+      </ng-container>
+      
+
+      <ng-container *ngIf="selectedReport == 1">
+        <mat-form-field>
+          <mat-label>Select Priority</mat-label>
+          <mat-select [(value)]="selectedPriority">
+            <mat-option *ngFor="let priority of priorities; let i = index" [value]="i">
+              {{priority}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-dialog-close class="btn cancel-btn" (click)="priorityReport()">Get Report</button>
+
+      </ng-container>
+
+      <ng-container *ngIf="selectedReport == 5">
+        <form [formGroup]="tagForm" class="example-form">
+          <mat-form-field class="example-full-width">
+            <mat-label>Enter Tag ID</mat-label>
+            <input type="text" matInput formControlName="tagIDControl">
+          </mat-form-field>
+          <button mat-dialog-close class="btn cancel-btn" (click)="tagIDReport()">Get Report</button>
+        </form>
+      </ng-container>
+      <ng-container *ngIf="generateReport && (selectedReport == 5 || selectedReport == 2)">
+          <table class="trending-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Tag Name</th>
+                    <th>Tag ID</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tag of tags">
+                    <td>{{tag.id}}</td>
+                    <td>{{formatDate(tag.timestamp)}}</td>
+                    <td>{{tag.tagName}}</td>
+                    <td>{{tag.tagID}}</td>
+                    <td>{{tag.value}}</td>
+                </tr>
+            </tbody>
+        </table>   
+      </ng-container>
+      <ng-container *ngIf="generateReport && (selectedReport == 1 || selectedReport == 0)">
+        <table class="trending-table">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Timestamp</th>
+                  <th>Tag ID</th>
+                  <th>Alarm ID</th>
+                  <th>Type</th>
+                  <th>Priority</th>
+                  <th>Value Limit</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let alert of alerts">
+                  <td>{{alert.id}}</td>
+                  <td>{{formatDate(alert.timestamp)}}</td>
+                  <td>{{alert.alarm.tagID}}</td>
+                  <td>{{alert.alarm.id}}</td>
+                  <td>{{getType(alert.alarm.type)}}</td>
+                  <td>{{getPriority(alert.alarm.priority)}}</td>
+                  <td>{{alert.alarm.valueLimit}}</td>
+              </tr>
+          </tbody>
+      </table>   
+    </ng-container>
+    <ng-container *ngIf="generateReport && (    selectedReport == 4 || selectedReport == 3 
+    )">
+      <table class="trending-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Timestamp</th>
+                <th>Tag Name</th>
+                <th>Tag ID</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tag of tags">
+                <td>{{tag.lastTagChange.id}}</td>
+                <td>{{formatDate(tag.lastTagChange.timestamp)}}</td>
+                <ng-container *ngIf="(selectedReport == 3 )">
+
+                <td>{{tag.analogInput.tagName}}</td>
+                <td>{{tag.analogInput.id}}</td>
+                <td>{{tag.analogInput.currentValue}}</td>
+                </ng-container>
+                <ng-container *ngIf="(selectedReport == 4 )">
+
+                  <td>{{tag.digitalInput.tagName}}</td>
+                  <td>{{tag.digitalInput.id}}</td>
+                  <td>{{tag.digitalInput.currentValue}}</td>
+                  </ng-container>
+            </tr>
+        </tbody>
+    </table>   
+  </ng-container>
+
+
+    </div>
+  </div>
+  

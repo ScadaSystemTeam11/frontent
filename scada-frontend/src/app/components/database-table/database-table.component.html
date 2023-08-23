@@ -1,0 +1,62 @@
+
+<div class="selected-options">
+<button (click)="openCreateTag('DigitalInput')">Create DIGITAL INPUT</button>
+<button (click)="openCreateTag('AnalogInput')">Create ANALOG INPUT</button>
+<button (click)="openCreateTag('DigitalOutput')">Create DIGITAL OUTPUT</button>
+<button (click)="openCreateTag('AnalogOutput')">Create ANALOG OUTPUT</button>
+</div>
+  
+  <table class="file-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>On/Off</th>
+        <th>Alarms</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tag of tags">
+        <td>{{tag.tagName}}</td>
+        <td>{{tag.description}}</td>
+        <td><ng-container *ngIf="!editModeMap.get(tag.id); else editInput">
+          {{ tag.currentValue }}
+        </ng-container>
+        <ng-template #editInput>
+          <input
+            type="number"
+            [(ngModel)]="tag.currentValue"
+            (blur)="editModeMap.set(tag.id, false); updateTagValue(tag)"
+          />
+        </ng-template>
+          <ng-container *ngIf="isOutput(tag); else notOutputTag">
+            <img src="../../../assets//images/icons/edit-icon.png" alt="Edit icon"  class="more-info" (click)="editModeMap.set(tag.id, true)">
+          </ng-container>
+          <ng-template #notOutputTag></ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="isInputTag(tag); else notInputTag">
+            <mat-slide-toggle class="slider" [checked]="tag.onOffScan" (click)="setTagScanOnOff(tag)">
+            </mat-slide-toggle>
+          </ng-container>
+          <ng-template #notInputTag></ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="isAnalogInput(tag); else notAnalogInputTag">
+            <img src="../../../assets//images/icons/alarm-icon-black.png" alt="Alarm icon" (click)="openAlarmsMenu(tag)" class="more-info">
+          </ng-container>
+          <ng-template #notAnalogInputTag></ng-template>
+        </td>
+        <td id="row-options">
+          <img src="../../../assets/images/icons/trash-icon.png" alt="Delete Icon" (click)="deleteTag(tag)" class="more-info">
+          <img src="../../../assets/images/icons/info-icon.png" alt="More Info Icon" (click)="openTagPreview(tag)" class="more-info"> 
+  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  

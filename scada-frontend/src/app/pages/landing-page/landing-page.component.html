@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="main-text lato">
+        <h1>Welcome to our SCADA App</h1>
+    </div>
+    <app-login *ngIf="loginFormVisible" (loginFormVisible)="loginFormVisible= $event"></app-login>
+    <app-register *ngIf="!loginFormVisible" (loginFormVisible)="loginFormVisible= $event"></app-register>
+    
+</div>

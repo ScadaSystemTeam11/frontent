@@ -1,0 +1,20 @@
+<table class="trending-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>I/O Address</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tag of tags">
+            <td>{{tag.id}}</td>
+            <td>{{tag.tagName}}</td>
+            <td>{{tag.description}}</td>
+            <td>{{tag.ioAddress}}</td>
+            <td>{{tag.currentValue}}</td>
+        </tr>
+    </tbody>
+</table>

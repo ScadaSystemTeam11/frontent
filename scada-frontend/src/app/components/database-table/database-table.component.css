@@ -1,0 +1,130 @@
+.file-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  
+  .file-name:hover{
+    opacity: 0.9;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .file-table th,
+  .file-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .file-table th {
+    background-color: #f5f5f5;
+  }
+  
+  .file-table img {
+    width: 20px;
+    height: 20px;
+    /* Additional styling for icons */
+  }
+  
+  .file-table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .file-table .checkbox {
+    display: none;
+    accent-color: black;
+  }
+  
+  .file-table .checkbox:checked,
+  .file-table tbody tr:hover .checkbox {
+    display: inline-block;
+  }
+  
+  .file-table th{
+    background-color: var(--light-gray);
+    border-bottom: none;
+  }
+  
+  
+  .file-table td{
+    border-bottom: none;
+  }
+  
+  .invisible-column {
+    width: 36px;
+    padding: 0;
+    border-bottom: none;
+  }
+  
+  .more-options{
+    opacity: 0.8;
+    margin-right: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .more-info{
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  /* Existing CSS rules... */
+  
+  .file-table {
+    position: relative; /* Add relative positioning to the table */
+  }
+  
+  .options-menu {
+    position: absolute;
+    display: none;
+    width: 100px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .options-menu.show {
+    display: block;
+  }
+  
+  .options-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .options-menu ul li {
+    cursor: pointer;
+    padding: 5px 0;
+  }
+  
+  .options-menu ul li:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .selected-options{
+    margin-bottom: 20px;
+      text-align: center;
+      padding: 10px 20px;
+  }
+  .selected-options button{
+    border: none;
+    background-color: var(--navy-blue);
+    margin-right: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .empty-row{
+    padding: 24px;
+  }
+  
+  .slider button:focus{
+    border: none;
+    outline: none;
+  }
